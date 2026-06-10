@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Ahxan FF Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-fire"></i> Ahxan FF Store - Admin
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li id="adminUserButtons">
+                    <a href="profile.html" class="nav-link btn-profile">Profile</a>
+                    <button id="adminLogoutBtn" class="nav-link btn-logout">Logout</button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Container -->
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 style="margin-bottom: 0.5rem;">Admin Dashboard</h1>
+            <p style="color: var(--text-secondary);">Manage Free Fire IDs, users, and store settings</p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-container" style="margin-bottom: 3rem;">
+            <div class="stat-item glass-card">
+                <h3 id="totalIds">0</h3>
+                <p>Total IDs</p>
+            </div>
+            <div class="stat-item glass-card">
+                <h3 id="totalUsers">0</h3>
+                <p>Total Users</p>
+            </div>
+            <div class="stat-item glass-card">
+                <h3 id="totalOrders">0</h3>
+                <p>Total Orders</p>
+            </div>
+            <div class="stat-item glass-card">
+                <h3 id="totalRevenue">$0</h3>
+                <p>Total Revenue</p>
+            </div>
+        </div>
+
+        <!-- Admin Tabs -->
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchTab('ids')">
+                <i class="fas fa-gamepad"></i> Manage IDs
+            </button>
+            <button class="admin-tab" onclick="switchTab('users')">
+                <i class="fas fa-users"></i> Manage Users
+            </button>
+            <button class="admin-tab" onclick="switchTab('orders')">
+                <i class="fas fa-shopping-cart"></i> Manage Orders
+            </button>
+            <button class="admin-tab" onclick="switchTab('settings')">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+
+        <!-- Manage IDs Tab -->
+        <div id="ids" class="admin-content active">
+            <h2 style="margin-bottom: 2rem; color: var(--primary-color);">Manage Free Fire IDs</h2>
+            
+            <button class="btn btn-primary" onclick="showUploadForm()" style="margin-bottom: 2rem;">
+                <i class="fas fa-plus"></i> Upload New ID
+            </button>
+
+            <!-- Upload Form -->
+            <div id="uploadForm" class="glass-form" style="display: none; margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1.5rem;">Upload New Free Fire ID</h3>
+                <form id="idUploadForm">
+                    <div class="form-group">
+                        <label for="fireId">Fire ID</label>
+                        <input type="text" id="fireId" required placeholder="Enter Fire ID (e.g., 1234567890)">
+                    </div>
+                    <div class="form-group">
+                        <label for="playerName">Player Name</label>
+                        <input type="text" id="playerName" required placeholder="Player name">
+                    </div>
+                    <div class="form-group">
+                        <label for="level">Level</label>
+                        <input type="number" id="level" required placeholder="Player level" min="1" max="999">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price ($)</label>
+                        <input type="number" id="price" required placeholder="Price in USD" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" placeholder="ID description and details"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image URL</label>
+                        <input type="url" id="image" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <button type="submit" class="form-submit">
+                        <i class="fas fa-upload"></i> Upload ID
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="hideUploadForm()" style="width: 100%; margin-top: 0.5rem;">
+                        Cancel
+                    </button>
+                </form>
+            </div>
+
+            <!-- IDs Table -->
+            <div class="admin-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fire ID</th>
+                            <th>Player Name</th>
+                            <th>Level</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="idsTableBody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                No IDs uploaded yet. <a href="#" onclick="showUploadForm()" style="color: var(--primary-color);">Upload one now</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Manage Users Tab -->
+        <div id="users" class="admin-content">
+            <h2 style="margin-bottom: 2rem; color: var(--primary-color);">Manage Users</h2>
+            
+            <div class="admin-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Joined</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                No users yet
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Manage Orders Tab -->
+        <div id="orders" class="admin-content">
+            <h2 style="margin-bottom: 2rem; color: var(--primary-color);">Manage Orders</h2>
+            
+            <div class="admin-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Fire ID</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+                                No orders yet
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings" class="admin-content">
+            <h2 style="margin-bottom: 2rem; color: var(--primary-color);">Store Settings</h2>
+            
+            <div class="glass-form">
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="storeName">Store Name</label>
+                        <input type="text" id="storeName" value="Ahxan FF Store" placeholder="Store name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storeEmail">Store Email</label>
+                        <input type="email" id="storeEmail" value="support@ahxanstore.com" placeholder="Store email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storePhone">Store Phone</label>
+                        <input type="tel" id="storePhone" value="+1234567890" placeholder="Store phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storeCurrency">Currency</label>
+                        <select id="storeCurrency">
+                            <option>USD ($)</option>
+                            <option>EUR (€)</option>
+                            <option>GBP (£)</option>
+                            <option>PKR (₨)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maintenanceMode">
+                            <input type="checkbox" id="maintenanceMode">
+                            Maintenance Mode (Site will be unavailable for users)
+                        </label>
+                    </div>
+
+                    <button type="submit" class="form-submit">
+                        <i class="fas fa-save"></i> Save Settings
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Admin Panel</h4>
+                <p>Ahxan FF Store Administration</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ahxan FF Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
