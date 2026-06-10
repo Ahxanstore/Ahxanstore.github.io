@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Ahxan FF Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-fire"></i> Ahxan FF Store
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="store.html" class="nav-link">Store</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li id="authButtons">
+                    <a href="login.html" class="nav-link btn-login">Login</a>
+                    <a href="register.html" class="nav-link btn-register">Register</a>
+                </li>
+                <li id="userButtons" style="display: none;">
+                    <a href="profile.html" class="nav-link btn-profile">Profile</a>
+                    <button id="logoutBtn" class="nav-link btn-logout">Logout</button>
+                </li>
+                <li id="adminBtn" style="display: none;">
+                    <a href="admin.html" class="nav-link btn-admin">Admin Panel</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <div style="max-width: 1000px; margin: 5rem auto; padding: 2rem;">
+        <h1 class="section-title" style="text-align: center;">Get in Touch</h1>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Have questions? We'd love to hear from you.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+            <!-- Contact Info Cards -->
+            <div class="glass-card">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:support@ahxanstore.com" style="color: var(--primary-color);">support@ahxanstore.com</a></p>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p><a href="tel:+1234567890" style="color: var(--secondary-color);">+1 (234) 567-890</a></p>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Ahxan City, Pakistan</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Send us a Message</h2>
+            <form id="contactForm" class="glass-form">
+                <div class="form-group">
+                    <label for="contactName">Full Name</label>
+                    <input type="text" id="contactName" name="name" required placeholder="Your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="contactEmail">Email Address</label>
+                    <input type="email" id="contactEmail" name="email" required placeholder="Your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="contactSubject">Subject</label>
+                    <input type="text" id="contactSubject" name="subject" required placeholder="Message subject">
+                </div>
+
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" name="message" required placeholder="Your message..."></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </div>
+
+        <!-- FAQ Section -->
+        <div style="max-width: 600px; margin: 3rem auto;">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Frequently Asked Questions</h2>
+            
+            <div class="glass-card" style="margin-bottom: 1rem;">
+                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">How do I purchase a Free Fire ID?</h4>
+                <p>Browse our store, select an ID you like, and proceed to checkout. You'll receive the account details via email.</p>
+            </div>
+
+            <div class="glass-card" style="margin-bottom: 1rem;">
+                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Is my payment secure?</h4>
+                <p>Yes, we use SSL encryption and trusted payment gateways to ensure all transactions are secure.</p>
+            </div>
+
+            <div class="glass-card" style="margin-bottom: 1rem;">
+                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">What if I forget my password?</h4>
+                <p>Click on "Forgot Password" on the login page and follow the instructions to reset your password.</p>
+            </div>
+
+            <div class="glass-card">
+                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">How can I contact support?</h4>
+                <p>You can reach us through email, phone, or by filling out the contact form above. We respond within 24 hours.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>Ahxan FF Store - Premium Free Fire ID Marketplace</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="store.html">Store</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ahxan FF Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
